@@ -1,0 +1,6 @@
+Spring:
+  application:
+    name: city-connectivity
+
+cities:
+  filepath: classpath:city/city.txt
