@@ -11,6 +11,8 @@ public class CityConnectivityService {
     private CityConnectivity cityConnectivity;
 
     public boolean isCitiesAreConnected(String source, String destination) {
+
         return cityConnectivity.isCityConnected(source, destination);
+
     }
 }

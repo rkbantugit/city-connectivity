@@ -11,8 +11,15 @@ import java.util.Set;
 @Component
 public class CityConnectivity {
 
+
     private final List<Set<String>> connectedCities = new LinkedList<>();
 
+    /**
+     * Method vlidate the connectivity between the cities
+     * @param origin
+     * @param destination
+     * @return
+     */
     public boolean isCityConnected(String origin, String destination) {
 
         if(StringUtils.isEmpty(origin) && StringUtils.isEmpty(destination)){
@@ -26,6 +33,10 @@ public class CityConnectivity {
         String originStr = origin.trim().toUpperCase();
         String destinationStr = destination.trim().toUpperCase();
 
+        /**
+         * Loop through set of cities and check if any city 'Origin' or 'Destination' is available i  Set, if yes
+         *  then add cities to that Set
+         */
         for (Set<String> cities : connectedCities) {
             if (cities.contains(originStr) && cities.contains(destinationStr)) {
                 return true;
@@ -35,6 +46,11 @@ public class CityConnectivity {
         return false;
     }
 
+    /**
+     * This Method is to add the cities
+     * @param origin
+     * @param destination
+     */
     public void addCities(String origin, String destination) {
         boolean isAdded = false;
         List<Set<String>> setCityList = new LinkedList<>();
@@ -42,7 +58,7 @@ public class CityConnectivity {
         String destinationStr = destination.trim().toUpperCase();
 
 
-        // Add cities to the set
+        // Iterate the connected cities for the list and Add cities to the set
         for (Set<String> cities : connectedCities) {
             if (cities.contains(originStr) || cities.contains(destinationStr)) {
                 cities.add(originStr);
@@ -51,7 +67,7 @@ public class CityConnectivity {
                 isAdded = true;
             }
         }
-
+        // validate two different mapping sets in the list
         if (setCityList.size() > 1) {
             Set<String> finalSet = new HashSet<>();
             for (Set<String> cities : setCityList) {

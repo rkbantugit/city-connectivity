@@ -16,6 +16,7 @@ public class CityConnectivityController {
     @GetMapping(path = "/cityconnectivity", produces = MediaType.APPLICATION_JSON_VALUE)
     public String connectCity(@RequestParam("origin") String origin,
                                @RequestParam("destination") String destination) throws Exception {
+        // Service call to validate the Connectivity between the cities
         return cityConnectivityService.isCitiesAreConnected(origin, destination) ? "YES":"NO";
 
     }
